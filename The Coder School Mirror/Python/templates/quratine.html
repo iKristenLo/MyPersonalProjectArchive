@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Quratine File Info</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body>
+    <div class="hero-container">
+      <div class="quratine-card">
+        <h1>File Information</h1>
+        {% if data %}
+          <ul class="quratine-file-list">
+            {% for file_info in data %}
+              <li class="quratine-file-item">
+                {% for key, value in file_info.items() %}
+                  <div class="result-item">
+                    <span class="quratine-key">{{ key|capitalize }}:</span>
+                    <span class="quratine-value">{{ value }}</span>
+                  </div>
+                {% endfor %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No file data available.</p>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>

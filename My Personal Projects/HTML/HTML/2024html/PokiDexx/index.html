@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <header>
+    <h1>
+      Pokemon.Dex
+    </h1>
+  </header>
+  <main>
+    <section id="pokemon-dex">
+      <div class="card">
+        <img class="picdex"/>
+        <p class="name"></p>
+      </div>
+      <div class="card">
+        <img class="picdex" src="https://static.wikia.nocookie.net/pokemonunite/images/d/d3/Glaceon_1.png"/>
+        <p class="glaceon">glaceon</p>
+      </div>
+    </section>
+    <button id="genbt">
+      Generate Pokemon
+    </button>
+    <form id="addpkm">
+      <label for = "PokiSearch">
+        Enter Pokemon's ID or Name
+      </label>
+      <input id="PokiSearch" type="text"/>
+      <button id="addbt">
+        Get Pokemon
+        
+      </button>
+      <span id="invalid-msg">
+        invalid Pokemon
+        </span>
+    </form>
+  </main>
+  <script src="script.js"></script>
+
+  <!--
+  This script places a badge on your repl's full-browser view back to your repl's cover
+  page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
+  teal, blue, blurple, magenta, pink!
+  -->
+  <script src="https://replit.com/public/js/replit-badge-v2.js" theme="dark" position="bottom-right"></script>
+</body>
+
+</html>

@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Roblox Forums — Mock (circa 2017)</title>
+<meta name="description" content="Static mockup of what the Roblox forums looked like around 2017." />
+<style>
+  /* Basic reset */
+  * { box-sizing: border-box; }
+  html,body { height:100%; margin:0; font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background:#eef2f5; color:#1f2937; }
+
+  /* Top bar (Roblox blue header vibe) */
+  .topbar {
+    background: linear-gradient(#2a6fb7, #1f5aa0);
+    color: #fff;
+    padding: 12px 18px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  }
+  .brand { font-weight:800; font-size:18px; display:flex; align-items:center; gap:10px; }
+  .brand .logo { width:34px; height:34px; border-radius:6px; background:#fff; color:#1f5aa0; display:grid; place-items:center; font-weight:900; }
+  .search { margin-left:auto; }
+  .search input { padding:8px 10px; border-radius:4px; border:none; width:320px; }
+
+  /* Page layout */
+  .container { max-width:1100px; margin:18px auto; display:grid; grid-template-columns: 260px 1fr; gap:18px; padding:0 12px; }
+  .left { grid-column: 1 / 2; }
+  .main { grid-column: 2 / 3; }
+
+  /* Sidebar cards */
+  .card { background:white; border:1px solid #d6e2ee; border-radius:6px; padding:12px; box-shadow: 0 1px 0 rgba(0,0,0,0.03); }
+  .category { margin-bottom:10px; font-weight:700; color:#0b3b60; font-size:14px; }
+
+  /* Forum list header */
+  .forum-header { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+  .forum-header h1 { margin:0; font-size:20px; color:#0b3b60; }
+
+  /* Thread list */
+  .thread-list { margin-top:6px; border-collapse:collapse; width:100%; }
+  .thread {
+    display:grid;
+    grid-template-columns: 36px 1fr 140px 120px;
+    gap:12px;
+    padding:12px;
+    align-items:center;
+    border-bottom:1px solid #eef3f7;
+  }
+  .thread:hover { background: #fbfdff; }
+  .icon { width:36px; height:36px; border-radius:6px; background:#f2f7fb; display:grid; place-items:center; color:#0b5aa6; font-weight:800; }
+  .thread .title { font-weight:700; color:#0b3b60; }
+  .thread .meta { color:#6b7c87; font-size:13px; }
+  .thread .replies { text-align:center; color:#0b3b60; font-weight:700; }
+
+  /* Thread view (post) */
+  .post { display:grid; grid-template-columns:180px 1fr; gap:12px; padding:12px; border-bottom:1px solid #e9f0f5; background:white; border:1px solid #dbeaf6; border-radius:6px; margin-bottom:12px; }
+  .avatar { width:120px; text-align:center; }
+  .avatar .pic { width:96px; height:96px; border-radius:10px; background:linear-gradient(135deg,#9fc6ff,#6aa9f0); display:inline-grid; place-items:center; color:white; font-weight:800; font-size:22px; margin-bottom:8px; }
+  .user-meta { font-size:13px; color:#355973; }
+  .post-body { padding:6px 4px; }
+  .post-body h2 { margin:0 0 6px; font-size:18px; color:#0b3b60; }
+  .post-body p { margin:0 0 12px; line-height:1.55; color:#243a4a; }
+
+  /* Pagination */
+  .pagination { display:flex; gap:8px; justify-content:center; margin:8px 0; }
+  .pg { padding:8px 10px; background:white; border:1px solid #d6e2ee; border-radius:4px; color:#0b3b60; font-weight:700; cursor:pointer; }
+  .pg.current { background:#1f5aa0; color:#fff; border-color:#1f5aa0; }
+
+  /* Small utilities */
+  .muted { color:#6b7c87; font-size:13px; }
+  .small { font-size:12px; color:#6d8795; }
+  .btn { display:inline-block; padding:8px 12px; background:#1f5aa0; color:#fff; border-radius:6px; text-decoration:none; font-weight:700; }
+  .compose { margin-top:10px; display:flex; gap:8px; }
+
+  /* mobile */
+  @media (max-width:880px) {
+    .container { grid-template-columns: 1fr; }
+    .thread { grid-template-columns: 36px 1fr; grid-auto-rows: auto; }
+    .post { grid-template-columns: 1fr; }
+    .avatar { text-align:left; }
+  }
+</style>
+</head>
+<body>
+  <header class="topbar" role="banner">
+    <div class="brand" aria-hidden="true">
+      <div class="logo">R</div>
+      Roblox Forums
+    </div>
+
+    <div class="muted" style="font-weight:700">Community • Discussions • Help</div>
+
+    <div class="search" role="search">
+      <input id="search" placeholder="Search the forums..." aria-label="Search forums">
+    </div>
+
+    <div style="margin-left:12px">
+      <a class="btn" href="#">Sign In</a>
+    </div>
+  </header>
+
+  <div class="container" role="main">
+    <!-- Sidebar -->
+    <aside class="left" aria-label="Forum sidebar">
+      <div class="card">
+        <div class="category">Navigation</div>
+        <div class="small"><strong>Home</strong></div>
+        <div class="small" style="margin-top:6px"><a href="#">My Profile</a></div>
+        <div class="small" style="margin-top:6px"><a href="#">New Posts</a></div>
+        <div class="small" style="margin-top:6px"><a href="#">Bookmarks</a></div>
+
+        <hr style="margin:10px 0;border:none;border-top:1px solid #eef3f7">
+
+        <div class="category">Forums</div>
+        <div class="small"><a href="#">General Discussion</a></div>
+        <div class="small" style="margin-top:6px"><a href="#">Builders Club (legacy)</a></div>
+        <div class="small" style="margin-top:6px"><a href="#">Scripting Support</a></div>
+        <div class="small" style="margin-top:6px"><a href="#">Suggestions</a></div>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <div class="category">Stats</div>
+        <div class="small">Threads: <strong>12,482</strong></div>
+        <div class="small" style="margin-top:6px">Members: <strong>5,231,102</strong></div>
+        <div class="compose">
+          <a class="btn" href="#">Create Topic</a>
+          <a class="btn" href="#" style="background:#4aa36a">New Poll</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main content: Thread list and view -->
+    <section class="main" aria-label="Forum content">
+      <div class="card forum-header">
+        <div>
+          <h1>General Discussion</h1>
+          <div class="muted">Talk about Roblox with other users — rules apply, be respectful.</div>
+        </div>
+      </div>
+
+      <!-- Thread list (mock) -->
+      <div class="card" aria-label="Threads">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <div style="font-weight:800;color:#0b3b60">Latest threads</div>
+          <div class="muted small">Sorted by most recent</div>
+        </div>
+
+        <div class="thread-list" role="list">
+          <div class="thread" role="listitem" aria-label="Thread: Where did my Robux go?">
+            <div class="icon">!</div>
+            <div>
+              <div class="title">Where did my Robux go? (Help please)</div>
+              <div class="meta">Posted by <strong>AceBuilder</strong> · 2 hours ago · <span class="small">Views: 3,412</span></div>
+            </div>
+            <div class="replies">128</div>
+            <div class="meta small">Last: <strong>Mod_Jane</strong><br>30m ago</div>
+          </div>
+
+          <div class="thread" role="listitem" aria-label="Thread: Map Editor - performance tips">
+            <div class="icon">M</div>
+            <div>
+              <div class="title">Map Editor - performance tips?</div>
+              <div class="meta">Posted by <strong>Mapmaker77</strong> · 5 hours ago · <span class="small">Views: 1,102</span></div>
+            </div>
+            <div class="replies">22</div>
+            <div class="meta small">Last: <strong>Mapmaker77</strong><br>3h ago</div>
+          </div>
+
+          <div class="thread" role="listitem" aria-label="Thread: New update discussion">
+            <div class="icon">U</div>
+            <div>
+              <div class="title">Thoughts on the latest client update?</div>
+              <div class="meta">Posted by <strong>PlayerOne</strong> · 1 day ago · <span class="small">Views: 7,882</span></div>
+            </div>
+            <div class="replies">89</div>
+            <div class="meta small">Last: <strong>Dev_Team</strong><br>22h ago</div>
+          </div>
+
+          <div class="thread" role="listitem" aria-label="Thread: Fan art showcase">
+            <div class="icon">★</div>
+            <div>
+              <div class="title">Fan art showcase: post your creations!</div>
+              <div class="meta">Posted by <strong>CreativeCat</strong> · 3 days ago · <span class="small">Views: 4,101</span></div>
+            </div>
+            <div class="replies">54</div>
+            <div class="meta small">Last: <strong>CreativeCat</strong><br>1d ago</div>
+          </div>
+        </div>
+
+        <!-- pagination -->
+        <div style="margin-top:12px">
+          <div class="pagination" role="navigation" aria-label="Pagination">
+            <div class="pg">« Prev</div>
+            <div class="pg">1</div>
+            <div class="pg current">2</div>
+            <div class="pg">3</div>
+            <div class="pg">Next »</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Selected thread view (mock post) -->
+      <div style="margin-top:14px">
+        <div class="post" role="article" aria-labelledby="post1-title">
+          <div class="avatar">
+            <div class="pic" aria-hidden="true">AB</div>
+            <div class="user-meta">
+              <div><strong>AceBuilder</strong></div>
+              <div class="small">Joined: 2014 · Posts: 1,243</div>
+              <div style="margin-top:6px"><span class="small">Location: Earth</span></div>
+            </div>
+          </div>
+
+          <div class="post-body">
+            <h2 id="post1-title">Where did my Robux go? (Help please)</h2>
+            <div class="small muted">Posted 2 hours ago · Views: 3,412</div>
+            <p>
+              Yesterday I purchased Robux and it showed up in my account, but today it's gone and I don't see any purchases on my receipt page. I checked transaction history and nothing. Has anyone else had this happen? I emailed support but no reply yet.
+            </p>
+
+            <p>
+              Steps I already tried: logged out/in, cleared cache, checked family settings. Any ideas?
+            </p>
+
+            <div style="margin-top:12px; display:flex; gap:8px;">
+              <a class="btn" href="#">Reply</a>
+              <a class="btn" href="#" style="background:#6b7280">Report</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- A reply post -->
+        <div class="post" role="article" aria-labelledby="post2-title">
+          <div class="avatar">
+            <div class="pic" aria-hidden="true">MJ</div>
+            <div class="user-meta">
+              <div><strong>Mod_Jane</strong></div>
+              <div class="small">Moderator · Staff</div>
+            </div>
+          </div>
+
+          <div class="post-body">
+            <h2 id="post2-title">Moderator response</h2>
+            <div class="small muted">Posted 30 minutes ago</div>
+            <p>
+              Hi @AceBuilder — thanks for the report. We can look into your account if you send the transaction ID and the email you used for the purchase. Please <a href="#">open a support ticket</a> and include that info.
+            </p>
+            <p class="muted small">Note: Do not post personal account information publicly.</p>
+          </div>
+        </div>
+
+        <!-- Another reply -->
+        <div class="post" role="article" aria-labelledby="post3-title">
+          <div class="avatar">
+            <div class="pic" aria-hidden="true">CB</div>
+            <div class="user-meta">
+              <div><strong>CreativeCat</strong></div>
+              <div class="small">Joined: 2012 · Posts: 5,802</div>
+            </div>
+          </div>
+
+          <div class="post-body">
+            <h2 id="post3-title">Have you checked gift cards?</h2>
+            <div class="small muted">Posted 12 minutes ago</div>
+            <p>
+              I had a similar issue once — support fixed it. If you bought through a third-party or gift card code, double-check there wasn't a refund or reversal.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pagination for posts -->
+        <div style="margin-top:8px">
+          <div class="pagination" role="navigation" aria-label="Post pagination">
+            <div class="pg">« Prev</div>
+            <div class="pg current">1</div>
+            <div class="pg">2</div>
+            <div class="pg">3</div>
+            <div class="pg">Next »</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <footer style="text-align:center;padding:18px;color:#6b7c87">
+    <div style="max-width:1100px;margin:0 auto">This is a static mockup inspired by the visual style of the Roblox public forums from around 2017 — for demonstration purposes only.</div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<head>
+    <title>exclusions test</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <h1>
+        Exclusions List
+    </h1>
+    {% if exclusions %}
+        <ul class="featrue-list">
+            {% for path in exclusions  %}
+                <li>{{ path }}
+                    <form method="POST" style="display: inline;">
+                        <input type="hidden" name="path" value="{{ path }}">
+                        <input type="hidden" name="action" value="remove">
+                        <button type="submit">REMOVE</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No Exclusions In DB!</p>
+    {% endif %}
+    <h2>
+        Add An Exclusion
+    </h2>
+    <form method="POST" class="cta-section">
+        <input type="hidden" name="action" value="add">
+        <input type="text" name="path" placeholder="Example: C:\" required>
+        <button type="submit">Submit To DB</button>
+    </form>
+</body>

@@ -1,0 +1,82 @@
+<body>
+<!-- Place this below the "Top Voted Features" section, before the footer -->
+
+<!-- Video Suggestions Feed -->
+<section class="max-w-7xl mx-auto px-4 py-16">
+  <h3 class="text-2xl font-bold mb-6">Community Suggestions</h3>
+  <div id="suggestionGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Suggestions will be injected here -->
+  </div>
+</section>
+
+<!-- Subscription Modal -->
+<div id="subscribeModal" class="fixed inset-0 hidden items-center justify-center z-50">
+  <div class="absolute inset-0 bg-black/40"></div>
+  <div class="bg-white rounded-2xl shadow-xl p-6 max-w-md mx-auto relative">
+    <h3 class="text-xl font-bold mb-4">Subscribe to UserDrivenTube</h3>
+    <p class="mb-4">Enjoy an ad-free experience, vote on features, and help shape the platform for $60/year.</p>
+    <button id="confirmSubscribe" class="w-full py-2 rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700">Subscribe Now</button>
+    <button id="closeModal" class="absolute top-3 right-3 text-neutral-500 hover:text-neutral-800 font-bold">&times;</button>
+  </div>
+</div>
+
+<script>
+  // --- Sample Suggestion Data ---
+  const sampleSuggestions = [
+    { id: 'f1', title: 'Add Dark Mode Toggle', votes: 142 },
+    { id: 'f2', title: 'Better Comment Moderation Tools', votes: 123 },
+    { id: 'f3', title: 'Customizable Video Player', votes: 101 },
+    { id: 'f4', title: 'Video Speed Presets', votes: 87 },
+    { id: 'f5', title: 'Improved Search Filters', votes: 65 },
+  ];
+
+  // Render suggestions
+  function renderSuggestions() {
+    const grid = document.getElementById('suggestionGrid');
+    grid.innerHTML = '';
+    sampleSuggestions.forEach(s => {
+      const card = document.createElement('div');
+      card.className = 'border rounded-xl bg-white p-4 flex flex-col justify-between';
+      card.innerHTML = `
+        <h4 class="font-semibold mb-2">${s.title}</h4>
+        <div class="flex justify-between items-center mt-2">
+          <span class="text-sm text-neutral-600">${s.votes} votes</span>
+          <button class="px-3 py-1 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 voteBtn">Vote</button>
+        </div>
+      `;
+      // Handle vote button click
+      card.querySelector('.voteBtn').addEventListener('click', () => {
+        s.votes++;
+        renderSuggestions();
+      });
+      grid.appendChild(card);
+    });
+  }
+
+  renderSuggestions();
+
+  // --- Subscription Modal Controls ---
+  const modal = document.getElementById('subscribeModal');
+  const closeModalBtn = document.getElementById('closeModal');
+  const confirmSubscribe = document.getElementById('confirmSubscribe');
+
+  document.querySelectorAll('a[href="#subscribe"]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    });
+  });
+
+  closeModalBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  });
+
+  confirmSubscribe.addEventListener('click', () => {
+    alert('Subscribed! Thank you for suppodrting the platform.');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  });
+</script>
+</body>

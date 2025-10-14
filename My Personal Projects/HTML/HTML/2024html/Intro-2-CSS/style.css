@@ -1,0 +1,66 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+body {
+  background-color: red;
+}
+h1{
+  color: purple;
+  text-align: center;
+  font-family: arial;
+  font-size: 900%;
+}
+img{
+  width: 28%;
+  height: 46%;
+}
+
+button{
+  text-align: center;
+  background-color:aqua;
+  width:70%;
+  height:50%;
+}
+button:visited{
+  background-color:red;
+}
+button:hover{
+  background-color:blueviolet;
+  
+}
+.buttonb{
+  text-align: center;
+  background-color:red;
+  width:70%;
+  height:50%;
+}
+.buttonc{
+  text-align: center;
+  background-color:violet;
+  width:70%;
+  height:50%;
+}
+.buttond{
+  text-align: center;
+  background-color:blanchedalmond;
+  width:70%;
+  height:50%;
+}
+ul{
+  list-style-type:none ;
+  margin:0;
+  padding:0;
+  background-color:white ;
+}
+li{
+  display:inline;
+  padding:7%;
+  border-right: 2px solid  red;
+}
+li:last-child{
+  border-right: none;
+}
+.active{
+  background-color:indianred ;
+}

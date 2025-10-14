@@ -1,0 +1,89 @@
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenAI API Test</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-neutral-50 font-sans flex items-center justify-center h-screen">
+
+<div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
+  <h2 class="text-2xl font-bold mb-4">Test OpenAI API</h2>
+  <form id="apiForm" class="space-y-4">
+    <input type="text" id="apikey" placeholder="Enter OpenAI API Key" class="w-full px-3 py-2 border rounded-lg" required />
+    <textarea id="prompt" placeholder="Enter your prompt" class="w-full px-3 py-2 border rounded-lg" rows="4" required></textarea>
+    <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700">Submit</button>
+  </form>
+  <div id="response" class="mt-4 text-sm text-neutral-700"></div>
+</div>
+
+<script>
+document.getElementById('apiForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const apikey = document.getElementById('apikey').value.trim();
+  const prompt = document.getElementById('prompt').value.trim();
+  
+  const resDiv = document.getElementById('response');
+  resDiv.innerText = 'Processing...';
+  
+  const response = await fetch('/api/openai', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ apikey, prompt })
+  });
+  const data = await response.json();
+  
+  if(data.error){
+    resDiv.innerText = 'Error: ' + data.error;
+  } else {
+    resDiv.innerText = data.text;
+  }
+});
+</script>
+
+</body>
+</html>
+
+<script>
+document.getElementById('apiForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const apikey = document.getElementById('apikey').value.trim();
+  const prompt = document.getElementById('prompt').value.trim();
+
+  const resDiv = document.getElementById('response');
+  resDiv.innerText = 'Processing...';
+
+  // Request notification permission if not granted
+  if (Notification.permission !== "granted") {
+    await Notification.requestPermission();
+  }
+
+  try {
+    const response = await fetch('/api/openai', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ apikey, prompt })
+    });
+    const data = await response.json();
+
+    if(data.error){
+      resDiv.innerText = 'Error: ' + data.error;
+    } else {
+      resDiv.innerText = data.text;
+
+      // Show browser notification
+      if (Notification.permission === "granted") {
+        new Notification("OpenAI Response", {
+          body: data.text.length > 200 ? data.text.slice(0, 200) + "…" : data.text,
+          icon: "https://upload.wikimedia.org/wikipedia/commons/0/04/OpenAI_Logo.svg"
+        });
+      }
+    }
+  } catch (err) {
+    resDiv.innerText = 'Error: ' + err;
+  }
+});
+</script>
+</body>

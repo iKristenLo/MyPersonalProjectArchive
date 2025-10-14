@@ -1,0 +1,156 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  
+}
+
+h1 {
+  color: blue;
+  text-align:center;
+  font-size: 170%;
+  font-family: brush script Std , cursive;
+  margin:auto;
+  padding:3%;
+  display:flex; 
+}
+
+.logo {
+  width: 10%;
+  height: 10%;
+  float: left;
+  margin-right: 10%; 
+}
+hr {
+  height:30%;
+  width:100%;
+  border-bottom:solid #3F00FF;  
+}
+
+ul{
+    display: flex;
+    list-style-type:none ;
+    height: 40px;
+    width: 1500px;
+    margin:30px;
+    padding:60px;
+    background-color:white ;
+    text-align: center;
+    font-family: brush script Std , cursive;
+}
+li{
+  
+  display: flex;
+  display:inline;
+  padding:9%;
+  border-right: 2px solid  red;
+  border-bottom: 2px solid red;
+}
+li:last-child{
+  border-right: 2px solid red;
+}
+
+.active{
+  background-color:indianred ;
+}
+li:first-child{
+  border-left:2px solid red;
+}
+.imghome{
+  display:flex;
+  opacity: 0.2;
+  width: 100px;
+  height: 100px; 
+}
+.imghome:hover{
+  display:flex;
+  animation: shake 1s;
+  animation-iteration-count: infinite;
+}
+@keyframes shake{
+  0% {transform: translate(1px,1px) rotate(0deg);}
+  10% {transform: translate(-1px,-2px) rotate(-1deg);}
+  20% {transform: translate(1px,3px) rotate(1deg);}
+  30% {transform: translate(-1px,-2px) rotate(-1deg);}
+  40% {transform: translate(1px,3px) rotate(1deg);}
+  50% {transform: translate(-1px,-2px) rotate(-1deg);}
+  60% {transform: translate(1px,3px) rotate(1deg);}
+  70% {transform: translate(-1px,-2px) rotate(-1deg);}
+  80% {transform: translate(1px,3px) rotate(1deg);}
+  90% {transform: translate(-1px,-2px) rotate(-1deg);}
+  100%{transform: translate(1px,3px) rotate(1deg);}
+}
+.imgpg1{
+  display:flex;
+  opacity: 0.9;
+  width: 100px;
+  height: 100px;
+}
+.imgpg1:hover{
+  display:flex;
+  animation: shake 1s;
+  animation-iteration-count: infinite;
+}
+@keyframes shake{
+  0% {transform: translate(1px,1px) rotate(0deg);}
+  10% {transform: translate(-1px,-2px) rotate(-1deg);}
+  20% {transform: translate(1px,3px) rotate(1deg);}
+  30% {transform: translate(-1px,-2px) rotate(-1deg);}
+  40% {transform: translate(1px,3px) rotate(1deg);}
+  50% {transform: translate(-1px,-2px) rotate(-1deg);}
+  60% {transform: translate(1px,3px) rotate(1deg);}
+  70% {transform: translate(-1px,-2px) rotate(-1deg);}
+  80% {transform: translate(1px,3px) rotate(1deg);}
+  90% {transform: translate(-1px,-2px) rotate(-1deg);}
+  100%{transform: translate(1px,3px) rotate(1deg);}
+}
+.imgpg2{
+  display:flex;
+  opacity: 0.8;
+  width: 100px;
+  height: 100px;
+}
+.imgpg2:hover{
+  display:flex;
+  animation: shake 1s;
+  animation-iteration-count: infinite;
+}
+@keyframes shake{
+  0% {transform: translate(1px,1px) rotate(0deg);}
+  10% {transform: translate(-1px,-2px) rotate(-1deg);}
+  20% {transform: translate(1px,3px) rotate(1deg);}
+  30% {transform: translate(-1px,-2px) rotate(-1deg);}
+  40% {transform: translate(1px,3px) rotate(1deg);}
+  50% {transform: translate(-1px,-2px) rotate(-1deg);}
+  60% {transform: translate(1px,3px) rotate(1deg);}
+  70% {transform: translate(-1px,-2px) rotate(-1deg);}
+  80% {transform: translate(1px,3px) rotate(1deg);}
+  90% {transform: translate(-1px,-2px) rotate(-1deg);}
+  100%{transform: translate(1px,3px) rotate(1deg);}
+}
+.imgpg3{
+  display:flex;
+  opacity: 0.7;
+  width: 100px;
+  height: 100px;
+}
+.imgpg3:hover{
+  display:flex;
+  animation: shake 1s;
+  animation-iteration-count: infinite;
+}
+@keyframes shake{
+  0% {transform: translate(1px,1px) rotate(0deg);}
+  10% {transform: translate(-1px,-2px) rotate(-1deg);}
+  20% {transform: translate(1px,3px) rotate(1deg);}
+  30% {transform: translate(-1px,-2px) rotate(-1deg);}
+  40% {transform: translate(1px,3px) rotate(1deg);}
+  50% {transform: translate(-1px,-2px) rotate(-1deg);}
+  60% {transform: translate(1px,3px) rotate(1deg);}
+  70% {transform: translate(-1px,-2px) rotate(-1deg);}
+  80% {transform: translate(1px,3px) rotate(1deg);}
+  90% {transform: translate(-1px,-2px) rotate(-1deg);}
+  100%{transform: translate(1px,3px) rotate(1deg);}
+}

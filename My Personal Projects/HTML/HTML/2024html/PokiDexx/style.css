@@ -1,0 +1,19 @@
+*{
+  box-sizing: border-box;
+  /* border: 1px solid red; */
+}
+html {
+  height: 100%;
+  width: 100%;
+}
+
+#pokemon-dex{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+#invalid-msg{
+  color:red;
+  visibility: hidden;
+}
